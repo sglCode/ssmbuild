@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sgl.dao.UserMapper">
+    <insert id="addUser" parameterType="com.sgl.pojo.User">
+        insert INTO USER (id,name,number,gender) VALUES (#{id},#{name},#{number},#{gender})
+    </insert>
+    <delete id="delUser" parameterType="int">
+        DELETE from user where id=#{id}
+    </delete>
+    <update id="updateUser" parameterType="com.sgl.pojo.User">
+        UPDATE user set name=#{name},number=#{number},gender=#{gender} where id=#{id}
+    </update>
+    <select id="findUser" parameterType="int" resultType="com.sgl.pojo.User">
+        SELECT * from user where id=#{id}
+    </select>
+    <select id="findUserList" resultType="com.sgl.pojo.User">
+        select * from user
+    </select>
+    <select id="findUserLike" resultType="com.sgl.pojo.User" parameterType="String">
+        SELECT * FROM user where name like #{word}
+    </select>
+</mapper>
